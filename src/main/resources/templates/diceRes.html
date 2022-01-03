@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dice Result</title>
+</head>
+<body>
+
+<!--<h1>Your dice guess is: </h1>-->
+<!--<h1 th:href="@{diceRes}"></h1>-->
+<!--<h1 th:href="${diceRes}"></h1>-->
+
+<h1>You guessed: <span th:text="${n}"></span></h1>
+<h1>The number was: <span th:text="${diceGuess}"></span></h1>
+
+<h3 th:text="${respond}"></h3>
+
+<a href="/roll-dice">Play again!</a>
+
+</body>
+</html>
+
