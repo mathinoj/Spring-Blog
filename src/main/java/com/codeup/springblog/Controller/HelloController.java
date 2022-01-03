@@ -1,6 +1,7 @@
 package com.codeup.springblog.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -22,6 +23,18 @@ public class HelloController {
     @ResponseBody
     public String addOne(@PathVariable int number){
         return "Hey, your number plus one is " +(number + 1)+ "!";
+    }
+
+
+    @GetMapping("/register")
+    public String showRegForm(){
+        return "join";
+    }
+
+    @PostMapping("/register")
+    public String regCohort(@RequestParam(name="cohort") String cohort, Model model){
+        model.addAttribute("cohort", "Welcome to " + cohort + "?");
+        return "join";
     }
 }
 

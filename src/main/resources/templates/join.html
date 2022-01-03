@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Today</title>
+</head>
+<body>
+<p>Registrar rite her, brah!</p>
+
+<h1 th:text="${cohort}"></h1>
+
+<form action="/register" method="post">
+    <input type="text" name="cohort" id="cohort-ip" class="field" />
+<!--    you can take out the id/class, and it'll still work-->
+    <button>Register rite quick like</button>
+</form>
+
+</body>
+</html>
