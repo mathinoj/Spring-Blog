@@ -16,24 +16,13 @@ public class DiceController {
 
     @GetMapping("/roll-dice/{n}")
     public String dice(@PathVariable int n, Model model){
-//        int diceGuess = (int) ((Math.random() * (6 - 1)) + 1);
+        int diceGuess = (int) ((Math.random() * (7 - 1)) + 1);
         String respond;
 
-
-        int diceGuess = ThreadLocalRandom.current().nextInt(1, 6 + 1);
-
-//        model.addAttribute("cohort", "Welcome to " + number + "?");
-//        return "diceRes";
-
-//        model.addAttribute("viewNumber", number);
-//        model.addAttribute("viewRoll", roll-dice);
-//        return "roll-dice";
-
-
         if(diceGuess == n){
-            respond = "You guessed correctly!";
+            respond = "You got it, brah!";
         }else{
-            respond = "Incorrect. Try again";
+            respond = "Try again, broseph";
         }
 
         model.addAttribute("number", n);
