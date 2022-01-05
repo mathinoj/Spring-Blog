@@ -1,6 +1,8 @@
 package com.codeup.springblog.Controller;
 
+import models.Post;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -10,28 +12,29 @@ public class PostController {
 
     @GetMapping("/posts")
     @ResponseBody
-    public String posts(){
+    public String posts() {
         return "Posts index page.";
     }
 
-        @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String postsId(@PathVariable int id){
-        return "View an individual post. " +id;
+    @GetMapping("/posts/show")
+    public String individualPost(Model viewModel) {
+        Post newPost = new Post("Hello Earth", "Welcome to the shack");
+        viewModel.addAttribute("post", newPost);
+        return "posts/show";
     }
 
 
-        @GetMapping("/posts/create")
+    @GetMapping("/posts/create")
     @ResponseBody
     public String postsCreate() {
         return "View the form for creating a post. ";
     }
 
-        @PostMapping("/posts/create")
-        @ResponseBody
-        public String postsCreateNew () {
-            return "Create a new post. ";
-        }
+    @PostMapping("/posts/create/new")
+    @ResponseBody
+    public String postsCreateNew() {
+        return "Create a new post. ";
+    }
 
 }
 
