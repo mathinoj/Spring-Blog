@@ -5,15 +5,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class PostController {
 //BLOCKED OUT ONES ARE THE RITE ONES!!!!!!!
 
 
     @GetMapping("/posts")
-    @ResponseBody
-    public String posts() {
-        return "Posts index page.";
+//    @ResponseBody
+    public String indexPosts(Model viewModel) {
+        Post newPostOne = new Post("Post 1", "Yo!");
+        Post newPostTwo = new Post("Post 2", "Yolo!");
+
+        List<Post> posts = new ArrayList<>();
+        posts.add(newPostOne);
+        posts.add(newPostTwo);
+
+        viewModel.addAttribute("posts", posts);
+
+        return "posts/index";
     }
 
     @GetMapping("/posts/show")
@@ -30,7 +42,7 @@ public class PostController {
         return "View the form for creating a post. ";
     }
 
-    @PostMapping("/posts/create/new")
+    @PostMapping("/posts/create")
     @ResponseBody
     public String postsCreateNew() {
         return "Create a new post. ";
