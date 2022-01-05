@@ -10,8 +10,6 @@ import java.util.List;
 
 @Controller
 public class PostController {
-//BLOCKED OUT ONES ARE THE RITE ONES!!!!!!!
-
 
     @GetMapping("/posts")
 //    @ResponseBody

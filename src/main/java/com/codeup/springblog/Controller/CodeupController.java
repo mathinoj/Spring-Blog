@@ -1,9 +1,12 @@
 package com.codeup.springblog.Controller;
 
+import models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -16,13 +19,16 @@ public class CodeupController {
 
     @GetMapping("/codeup")
 //    @ResponseBody
-    public String postIndex(Model model) {
-        model.addAttribute("name", codeupDao.findAll());
-//        model.addAttribute("title", codeupDao.findAll());
+    public String codeupIndex(Model model) {
+        model.addAttribute("allCodeup", codeupDao.findAllByName(""));
+//        model.addAttribute("allCodeup", codeupDao.findAll());
+//        model.addAttribute("allCodeup", codeupDao.findAll());
 
-        model.addAttribute("groups", codeupDao.findAllByName("quasar"));
+//        model.addAttribute("name", codeupDao.findByName("Matthias"));
+//        model.addAttribute("cohort", codeupDao.findByCohort("Quasar"));
+//        model.addAttribute("body", codeupDao.findByBody(""));
 
-        return "Codeup";
+        return "codeup";
     }
 }
 

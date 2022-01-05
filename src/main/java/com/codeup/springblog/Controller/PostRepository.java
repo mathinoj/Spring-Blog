@@ -1,18 +1,23 @@
 package com.codeup.springblog.Controller;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-//import org.springframework.data.repository.query.Param;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface PostRepository extends JpaRepository<Codeup, String> {
-    Codeup findByName(String name);
-//    Codeup findByTitle(String title);
+public interface PostRepository extends JpaRepository<Codeup, Long> {
+//    Codeup findByName(String name);
+//    Codeup findByCohort(String cohort);
+//    Codeup findByBody(String body);
 
-//    List<Post> searchByTitleLike(@Param("term") long id);
-//    List<Codeup> searchByTitleLike(@Param("term") String name);
+
+//    List<Codeup> searchByNameLike(@Param("name") String name);
+//    List<Codeup> searchByCohortLike(@Param("cohort") String cohort);
+//    List<Codeup> searchByBodyLike(@Param("body") String body);
+
+
     List<Codeup> findAllByName(String name);
-//    List<Codeup> findAllByTitle(String title);
-
+//    List<Codeup> findAllByCohort(String cohort);
+//    List<Codeup> findAllByBody(String body);
 
 }

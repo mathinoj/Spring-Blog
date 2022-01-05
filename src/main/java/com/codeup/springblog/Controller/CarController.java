@@ -16,7 +16,7 @@ public class CarController {
     public String carIndex(Model model){
         model.addAttribute("cars", carDao.findAll());
 
-        model.addAttribute("toyotas", carDao.findByMake("Toyota")); //to do this you have to make method in carRepository
+        model.addAttribute("toyotas", carDao.findAllByMake("Toyota")); //to do this you have to make method in carRepository
         return "cars";
     }
 }

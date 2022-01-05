@@ -2,14 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Posts</title>
+    <title>CODEUP</title>
 </head>
 <body>
-
-<!--<div th:each="items : ${codeup}">-->
-<!--    <p th:text="${codeup.getName()}" />-->
-<!--&lt;!&ndash;    <p th:text="${posts.getTitle()}" />&ndash;&gt;-->
-<!--</div>-->
+<h1>Herro</h1>
+<div th:each="codeup : ${allCodeup}">
+    <p th:text="${codeup.getName()}" />
+    <p th:text="${codeup.getCohort()}" />
+    <p th:text="${codeup.getBody()}" />
+</div>
 
 <!--<form action="/codeup/create" method="post">-->
 <!--    Title:-->
@@ -21,15 +22,15 @@
 <!--    <input type="submit" />-->
 <!--</form>-->
 
-<form th:action="@{/codeup/create}" th:method="post" th:object="${codeup/create}">
-    Title:
-    <input th:field="*{name}" />
-    <br />
-    Description:
-    <input th:field="*{cohort}" />
-    <br />
-    <input type="submit" />
-</form>
+<!--<form th:action="@{/codeup/create}" th:method="post" th:object="${codeup/create}">-->
+<!--    Title:-->
+<!--    <input th:field="*{name}" />-->
+<!--    <br />-->
+<!--    Description:-->
+<!--    <input th:field="*{cohort}" />-->
+<!--    <br />-->
+<!--    <input type="submit" />-->
+<!--</form>-->
 
 </body>
 </html>
