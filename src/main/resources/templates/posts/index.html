@@ -2,14 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Post Index</title>
 </head>
 <body>
 
-<div th:each="post : ${posts}">
-    <p th:text="${post.title}" />
-    <p th:text="${post.body}" />
+<div th:each="post : ${allPosts}">
+    <span th:text="${post.getTitle()}"></span>
+    <span th:text="${post.getCohort()}"></span>
+    <p th:text="${post.getBody()}"></p>
+
+    <form th:action="'/posts/edit/' + ${post.getId()}" method="get">
+        <button>Edit</button>
+    </form>
+
+    <form th:action="'/posts/delete/' + ${post.getId()}" method="post">
+        <button>Delete</button>
+    </form>
+
+    <br>
 </div>
 
 </body>
 </html>
+

@@ -1,64 +1,59 @@
 package com.codeup.springblog.Controller;
 
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="codeupTable")
-public class Codeup {
+@Table(name="posts")
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
 
-    public long getId() {
+    @Column(nullable = false, length = 100)
+    private String title;
+
+    @Column(nullable = false,length = 100)
+    private String cohort;
+
+    @Column(nullable = false, length = 1000)
+    private String body;
+
+    public long getId(){
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(long id){
         this.id = id;
     }
 
-    @Column(nullable = false, length = 150)
-    private String name;
-
-    public String getName(){
-        return name;
+    public String getTitle(){
+        return title;
     }
 
-    public void setName(String name){
-        this.name = this.name;
+    public void setTitle(String title){
+        this.title = title;
     }
-
-    @Column(nullable = false, length = 250)
-    private String cohort;
 
     public String getCohort(){
         return cohort;
     }
 
     public void setCohort(String cohort){
-        this.cohort = this.cohort;
+        this.cohort = cohort;
     }
-
-
-    @Column(nullable = false, length = 5000)
-    private String body;
 
     public String getBody(){
         return body;
     }
 
-    public void setBody(){
+    public void setBody(String body){
         this.body = body;
     }
 
-}
-//    private String name;
-//    private String body;
-//
-//    public Post(String title, String body){
+
+//    public Post(String title, String cohort, String body){
 //        this.title = title;
+//        this.cohort = cohort;
 //        this.body = body;
 //    }
 //
@@ -70,6 +65,14 @@ public class Codeup {
 //        this.title = title;
 //    }
 //
+//    public String getCohort(){
+//        return cohort;
+//    }
+//
+//    public void setCohort(String cohort){
+//        this.cohort = cohort;
+//    }
+//
 //    public String getBody() {
 //        return body;
 //    }
@@ -77,4 +80,4 @@ public class Codeup {
 //    public void setBody(String body) {
 //        this.body = body;
 //    }
-//}
+}
