@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+
+<!--<form action="${'/posts/create'}" method="post">-->
+<!--    <label name="postTitle">Title of Post:</label>-->
+<!--&lt;!&ndash;    <input name="postTitle" th:value="${postToCreate.getTitle()}">&ndash;&gt;-->
+<!--    <input name="postTitle" type="text" id="postTitle">-->
+
+<!--    -->
+<!--    <label name="postCohort">Name of Cohort</label>-->
+<!--    <input name="postCohort" th:value="${postToCreate.getCohort()}">-->
+
+<!--    <label name="postBody">Body of Post:</label>-->
+<!--    <input name="postBody" th:value="${postToCreate.getBody()}">-->
+
+<!--    <input name="postId" type="hidden" th:value="${postToCreate.getId()}">-->
+
+<!--    <button type="submit">Submit Create</button>-->
+
+<!--</form>-->
+
+<form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+    <label name="postTitle">Title of Post:</label>
+    <input type="text" th:field="*{title}" id="postTitle">
+
+    <label name="postCohort">Name of Cohort:</label>
+    <input type="text" th:field="*{cohort}" id="postCohort">
+
+    <label name="postBody">Body of Post:</label>
+    <input type="text" th:field="*{body}" id="postBody">
+
+    <button type="submit">Submit New Blog Post</button>
+
+</form>
+
+</body>
+</html>

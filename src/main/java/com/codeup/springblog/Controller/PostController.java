@@ -11,9 +11,11 @@ import java.util.List;
 public class PostController {
 
     private final PostRepository postDao;
+    private final UserRepository userDao;
 
-    public PostController(PostRepository postDao) {
+    public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/posts")
@@ -31,7 +33,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public String editPost(@PathVariable int id){
+    public String editPost(@PathVariable int id) {
         return "posts/show";
     }
 
@@ -66,26 +68,69 @@ public class PostController {
         return "redirect:/posts";
     }
 
-//    @GetMapping("/posts/show")
+    //    @GetMapping("/posts/show")
 //    public String individualPost(Model model) {
 //        Post newPost = new Post("Hello Earth", "Welcome to the shack");
 //        model.addAttribute("post", newPost);
 //        return "posts/show";
 //    }
 
+//    @GetMapping("/posts/{id}")
+//    public String createPost(@PathVariable int id) {
+//        return "posts/create";
+//    }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String postsCreate() {
-        return "View the form for creating a post. ";
+//    public String displayCreate(@PathVariable Model model){
+    public String displayCreate(Model model){
+        model.addAttribute("post", new Post());
+
+//        Post createPost = postDao.getById(id);
+
+//        model.addAttribute("post", new Post());
+//        model.addAttribute("postToCreate", createPost);
+
+        return "posts/create";
     }
+//IF I CAN SEND EMPTY OBJECT HOW WOULD I SEND AN UN-EMPTY OBJECT
+
+
+//    @PostMapping("/posts/create")
+//    public String createPost(@ModelAttribute Post post) {
+//        User user = usersDao.getOne(1L);
+//        post.setUser(user);
+//        postDao.save(post);
+//        return "redirect:/posts";
+//    }
+
+
+//    @PostMapping("/posts/create")
+//    public String createPost(@RequestParam(name="postTitle") String postTitle, @RequestParam(name="postCohort") String postCohort, @RequestParam(name="postBody") String postBody) {
+//
+////        Post postToCreate = postDao.getById(id);
+//
+//        Post postToCreate = new Post();
+//
+//        postToCreate.setTitle(postTitle);
+//        postToCreate.setCohort(postCohort);
+//        postToCreate.setBody(postBody);
+//        postToCreate.setUsername(usersDao.getById(1L));
+//
+//
+//        postDao.save(postToCreate);
+//
+//        return "redirect:/posts";
+//    }
+
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String postsCreateNew() {
-        return "Create a new post. ";
-    }
+    public String createPost(@ModelAttribute Post post){
+        post.setUser(userDao.getById(1L));
 
+        postDao.save(post);
+
+        return "redirect:/posts";
+    }
 }
 
 

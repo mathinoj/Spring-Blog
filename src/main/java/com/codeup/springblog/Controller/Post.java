@@ -26,6 +26,18 @@ public class Post {
         this.id = id;
     }
 
+    @ManyToOne
+    @JoinColumn (name="user_id")
+    private User user;
+
+    public User getUser(){
+        return user;
+    }
+
+    public void setUser(User user){
+        this.user = user;
+    }
+
     public String getTitle(){
         return title;
     }
@@ -51,33 +63,4 @@ public class Post {
     }
 
 
-//    public Post(String title, String cohort, String body){
-//        this.title = title;
-//        this.cohort = cohort;
-//        this.body = body;
-//    }
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-//
-//    public String getCohort(){
-//        return cohort;
-//    }
-//
-//    public void setCohort(String cohort){
-//        this.cohort = cohort;
-//    }
-//
-//    public String getBody() {
-//        return body;
-//    }
-//
-//    public void setBody(String body) {
-//        this.body = body;
-//    }
 }

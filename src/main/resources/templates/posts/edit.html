@@ -26,11 +26,15 @@
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<!--<head th:replace="partials :: head" />-->
+
+
     <meta charset="UTF-8">
     <title>Edit Page</title>
 </head>
 <body>
+<!--<nav th:replace="partials :: navbar" />-->
+
 
 <form th:action="${'/posts/edit'}" method="post">
     <label name="postTitle">Title of Post:</label>

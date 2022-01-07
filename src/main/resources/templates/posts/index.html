@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<!--<head th:replace="partials :: head" />-->
+
+
     <meta charset="UTF-8">
     <title>Post Index</title>
 </head>
 <body>
+<!--<nav th:replace="partials :: navbar"></nav>-->
+
 
 <div th:each="post : ${allPosts}">
     <span th:text="${post.getTitle()}"></span>
@@ -21,7 +25,7 @@
 
     <br>
 </div>
-
+<script th:replace="partials::script"/>
 </body>
 </html>
 
