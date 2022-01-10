@@ -38,6 +38,8 @@ public class Post {
         this.user = user;
     }
 
+//    public Post(){}
+
     public String getTitle(){
         return title;
     }

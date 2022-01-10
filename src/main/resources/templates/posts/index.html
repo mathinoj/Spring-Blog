@@ -13,7 +13,12 @@
 <div th:each="post : ${allPosts}">
     <span th:text="${post.getTitle()}"></span>
     <span th:text="${post.getCohort()}"></span>
+<!--    <span th:text="${post.getUser().getEmail()}"></span>-->
+<!--    Post written by: <span th:text="${post.getUser().getEmail()}"></span>-->
+
     <p th:text="${post.getBody()}"></p>
+<!--    <span th:text="${post.getId()}"></span>-->
+
 
     <form th:action="'/posts/edit/' + ${post.getId()}" method="get">
         <button>Edit</button>
@@ -25,6 +30,22 @@
 
     <br>
 </div>
+
+<!--<div th:action="@{/posts}" th:each="post" th:object="${allPosts}">-->
+<!--    <label name="postTitle">Title of Post:</label>-->
+<!--    <span type="text" th:field="*{title}" id="postTitle">-->
+
+<!--    <label name="postCohort">Name of Cohort:</label>-->
+<!--    <span type="text" th:field="*{cohort}" id="postCohort">-->
+
+<!--    <label name="postBody">Body of Post:</label>-->
+<!--    <p type="text" th:field="*{body}" id="postBody">-->
+
+
+<!--    <button type="submit">Submit New Blog Post</button>-->
+
+<!--</div>-->
+
 <script th:replace="partials::script"/>
 </body>
 </html>

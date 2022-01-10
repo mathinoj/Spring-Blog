@@ -1,5 +1,6 @@
 package com.codeup.springblog.Controller;
 
+import com.codeup.springblog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,25 +13,23 @@ public class PostController {
 
     private final PostRepository postDao;
     private final UserRepository userDao;
+    private final EmailService emailService;
 
-    public PostController(PostRepository postDao, UserRepository userDao) {
+    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailService) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
 
     @GetMapping("/posts")
     public String indexPosts(Model model) {
-//        Post newPostOne = new Post("Post 1", "Yo!");
-//        Post newPostTwo = new Post("Post 2", "Yolo!");
-//
-//        List<Post> posts = new ArrayList<>();
-//        posts.add(newPostOne);
-//        posts.add(newPostTwo);
 
         model.addAttribute("allPosts", postDao.findAll());
 
         return "posts/index";
     }
+
+
 
     @GetMapping("/posts/{id}")
     public String editPost(@PathVariable int id) {
@@ -75,25 +74,25 @@ public class PostController {
 //        return "posts/show";
 //    }
 
-//    @GetMapping("/posts/{id}")
-//    public String createPost(@PathVariable int id) {
-//        return "posts/create";
-//    }
-
     @GetMapping("/posts/create")
-//    public String displayCreate(@PathVariable Model model){
-    public String displayCreate(Model model){
+//    public String displayCreatePost(@PathVariable Model model){
+    public String displayCreatePost(Model model){
         model.addAttribute("post", new Post());
-
-//        Post createPost = postDao.getById(id);
-
-//        model.addAttribute("post", new Post());
-//        model.addAttribute("postToCreate", createPost);
 
         return "posts/create";
     }
 //IF I CAN SEND EMPTY OBJECT HOW WOULD I SEND AN UN-EMPTY OBJECT
 
+//    @GetMapping("/posts/create/{id}")
+////    public String displayCreate(@PathVariable Model model){
+//    public String displayCreateId(@PathVariable long id, Model model){
+////        model.addAttribute("post", new Post());
+//        Post postId = postDao.getById(id);
+//        model.addAttribute("post", postId);
+////        postDao.getById(postId);
+//
+//        return "posts/show";
+//    }
 
 //    @PostMapping("/posts/create")
 //    public String createPost(@ModelAttribute Post post) {
@@ -127,6 +126,13 @@ public class PostController {
     public String createPost(@ModelAttribute Post post){
         post.setUser(userDao.getById(1L));
 
+        String emailSubject = post.getUser().getUsername() + ", your post has been created.";
+
+//        String emailCohort = post.getUsername().getUsername() + ", your cohort is listed as: ";
+
+        String emailBody = "Congrats your latest post is up: " + post.getBody();
+
+        emailService.prepareAndSend(post, emailSubject, emailBody);
         postDao.save(post);
 
         return "redirect:/posts";
