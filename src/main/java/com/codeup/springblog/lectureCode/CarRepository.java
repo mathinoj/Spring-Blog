@@ -1,4 +1,4 @@
-package com.codeup.springblog.Controller;
+package com.codeup.springblog.lectureCode;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,8 +1,7 @@
-package com.codeup.springblog.Controller;
+package com.codeup.springblog.repositories;
 
+import com.codeup.springblog.Controller.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);

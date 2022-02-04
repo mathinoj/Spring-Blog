@@ -1,6 +1,6 @@
 package com.codeup.springblog.services;
 
-import com.codeup.springblog.Controller.Post;
+import com.codeup.springblog.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
@@ -22,7 +22,6 @@ public class EmailService {
         msg.setFrom(from);
         msg.setTo(post.getUser().getEmail());
         msg.setSubject(subject);
-//        msg.setSubject(cohort);
         msg.setText(body);
 
         try{

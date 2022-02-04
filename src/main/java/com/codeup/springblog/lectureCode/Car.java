@@ -1,6 +1,6 @@
 //this creates a table, without us having to do a migration/seeder file
 
-package com.codeup.springblog.Controller;
+package com.codeup.springblog.lectureCode;
 
 import javax.persistence.*;
 

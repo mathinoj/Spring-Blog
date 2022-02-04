@@ -1,5 +1,7 @@
 package com.codeup.springblog.Controller;
 
+import com.codeup.springblog.models.Post;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -36,14 +38,14 @@ public class User {
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Post> userPosts;
+    private List<Post> posts;
 
-    public List<Post> getUserPosts() {
-        return userPosts;
+    public List<Post> getPosts() {
+        return posts;
     }
 
-    public void setUserPosts(List<Post> userPosts) {
-        this.userPosts = userPosts;
+    public void setPosts(List<Post> userPosts) {
+        this.posts = userPosts;
     }
 
     public User(){} //class 'User' should have [public, protected] no-arg constructor
@@ -75,3 +77,6 @@ public class User {
         this.password = password;
     }
 }
+
+
+
